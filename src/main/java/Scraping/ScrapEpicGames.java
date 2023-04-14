@@ -1,8 +1,9 @@
+package Scraping;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +11,7 @@ import java.util.Map;
 public class ScrapEpicGames {
 
     private Map<String, String> items;
+    protected static final String WEBSITE = "https://store.steampowered.com/charts/topselling/global";//ingresar a la url
 
     public static void main(String[] args) {
         new ScrapEpicGames().escanearJuegos();
@@ -19,7 +21,6 @@ public class ScrapEpicGames {
         escanearJuegos();
     }
 
-    protected static final String WEBSITE = "https://www.g2a.com/es/top-list/pc-games?banner=topbar";//ingresar a la url
 
 public void escanearJuegos(){
     Document document;
@@ -29,12 +30,13 @@ try {
     System.out.println("No hay conexion");
     return;
 }
-    Elements elements=document.getElementsByClass("indexes__Media-h6zdws-9 indexes__StyledMedia3-h6zdws-65 bwAgok fWrwgL");
-    System.out.println(elements);
-    for (Element element : elements) {
+    Elements elements=document.getElementsByClass("weeklytopsellers_TableRow_2-RN6");
+ /* for (Element element : elements) {//link videojuego
+       String link ="https://www.g2a.com"+element.select("a").first().attr("href");
+        System.out.println(link);
 
     }
-
+*/
 
     }
     
@@ -46,4 +48,4 @@ try {
 
 
 
-}
+

@@ -1,3 +1,5 @@
+import Tienda.Usuario;
+
 public class Controlador {
     private Usuario usuario;
 
