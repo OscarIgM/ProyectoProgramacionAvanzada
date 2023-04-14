@@ -1,32 +1,49 @@
 package Tienda;
 
-public class Usuario {
+import Scraping.Videojuegos;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-    private String nommbreUsuario;
+import java.util.ArrayList;
+
+@Getter
+@Setter
+
+@ToString
+public abstract class Usuario {
+
+    private String nombreUsuario;
     private String contrasena;
+    private String correoCliente;
+    private String telefonoCliente;
+    private String direccionCliente;
+    private ArrayList<Videojuegos> biblioteca;
 
-
-    public Usuario(String nommbreUsuario, String contrasena) {
-        this.nommbreUsuario = nommbreUsuario;
+    public Usuario(String nombreUsuario, String contrasena, String correoCliente, String telefonoCliente, String direccionCliente) {
+        this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
+        this.correoCliente = correoCliente;
+        this.telefonoCliente = telefonoCliente;
+        this.direccionCliente = direccionCliente;
     }
 
-    public String getNommbreUsuario() {
-        return nommbreUsuario;
+    public Usuario(ArrayList<Videojuegos> biblioteca) {
+        this.biblioteca = biblioteca;
+    }
+    public Usuario() {
+        this.biblioteca = new ArrayList<>();
     }
 
-    public void setNommbreUsuario(String nommbreUsuario) {
-        this.nommbreUsuario = nommbreUsuario;
+    public boolean verificarUsuario(String nombre, String contrasena) {
+        return this.nombreUsuario.equals(nombre) && this.contrasena.equals(contrasena);
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public ArrayList<Videojuegos> getBiblioteca() {
+        return biblioteca;
     }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-    public boolean verificar(String nombre, String contrasena) {
-        return this.nommbreUsuario.equals(nombre) && this.contrasena.equals(contrasena);
+    public void setBiblioteca(ArrayList<Videojuegos> biblioteca) {
+        this.biblioteca = biblioteca;
     }
 }
