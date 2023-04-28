@@ -11,12 +11,6 @@ import java.util.List;
 public class Tienda {
     private Inventario inventario;
 
-
-//enviar factura
-
-
-    //actualizarinventario
-
 public List<Videojuegos> buscarVideojuego(String nombre){
     return inventario.getInventario();
 }

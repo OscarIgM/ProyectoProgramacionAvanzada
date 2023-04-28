@@ -21,6 +21,11 @@ public abstract class Usuario {
         this.direccionCliente = direccionCliente;
     }
 
+    public Usuario(String nombreUsuario, String contrasena) {
+        this.nombreUsuario = nombreUsuario;
+        this.contrasena=contrasena;
+    }
+
     public Usuario(ArrayList<Videojuegos> biblioteca) {
         this.biblioteca = biblioteca;
     }

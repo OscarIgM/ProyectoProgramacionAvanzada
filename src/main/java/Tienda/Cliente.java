@@ -13,11 +13,14 @@ private Factura factura;
     public Cliente(String nombreUsuario, String contrasena, String correoCliente, String telefonoCliente, String direccionCliente) {
         super(nombreUsuario, contrasena, correoCliente, telefonoCliente, direccionCliente);
     }
+    public Cliente(String nombreUsuario,String contrasena){
+        super(nombreUsuario, contrasena);
+    }
+
 
         public void comprarVideojuego(Videojuegos juego) {//recordar asignar codigo a los videojuegos
-        int codigo=1;
-CarritoDeCompras carrito=new CarritoDeCompras();
-            carrito.agregar(juego,codigo);
+        int codigo= juego.getId();
+            carritoDeCompras.agregar(juego,codigo);
             System.out.println("Videojuego " + juego.getTitulo() + " agregado al carrito de compras.");
         }
 

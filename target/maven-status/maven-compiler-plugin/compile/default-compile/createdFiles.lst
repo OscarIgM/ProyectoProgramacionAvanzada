@@ -1,0 +1,12 @@
+Tienda\Tienda.class
+Utils.class
+Tienda\Cliente.class
+Tienda\Factura.class
+Scraping\ScrapJuegos.class
+Principal.class
+Tienda\Usuario.class
+Tienda\Administrador.class
+Tienda\Inventario.class
+Tienda\Videojuegos.class
+Tienda\CarritoDeCompras.class
+Controlador.class
