@@ -1,26 +1,31 @@
 package Tienda;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
+@NoArgsConstructor
 public class Tienda {
-private final Inventario inventario= new Inventario();
-
-    public Tienda(){
-mostrarInventario();
-    }
-public void mostrarInventario(){
-    for (int i = 0; i < inventario.getInventario().size(); i++) {
-        System.out.println(inventario.getInventario().get(i).getTitulo());
-    }
+    private Inventario inventario;
 
 
+//enviar factura
 
 
-    }
+    //actualizarinventario
 
-
-
+public List<Videojuegos> buscarVideojuego(String nombre){
+    return inventario.getInventario();
 }
+
+
+
+    }
+
+
 
 
 

@@ -1,6 +1,5 @@
 package Tienda;
 
-import Scraping.Videojuegos;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.HashMap;
@@ -17,9 +16,8 @@ public class CarritoDeCompras {
         this.juegos = new HashMap<>();
     }
 
-    public void agregar(Videojuegos juego, int cantidad) {
-        int cantidadActual = juegos.getOrDefault(juego, 0);
-        juegos.put(juego, cantidadActual + cantidad);
+    public void agregar(Videojuegos juego, int codigo) {
+        juegos.put(juego, codigo);
     }
     public void remover(Videojuegos juego, int cantidad) {
         int cantidadNueva = Math.max(juegos.getOrDefault(juego,0) - cantidad, 0);

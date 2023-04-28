@@ -1,26 +1,18 @@
 package Tienda;
-
-import Scraping.Videojuegos;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
 import java.util.ArrayList;
-
 @Getter
 @Setter
-
 @ToString
 public abstract class Usuario {
-
     private String nombreUsuario;
     private String contrasena;
     private String correoCliente;
     private String telefonoCliente;
     private String direccionCliente;
     private ArrayList<Videojuegos> biblioteca;
-
     public Usuario(String nombreUsuario, String contrasena, String correoCliente, String telefonoCliente, String direccionCliente) {
         this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;

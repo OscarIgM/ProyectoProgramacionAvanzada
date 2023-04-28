@@ -1,4 +1,4 @@
-package Scraping;
+package Tienda;
 
 import lombok.Getter;
 import lombok.Setter;

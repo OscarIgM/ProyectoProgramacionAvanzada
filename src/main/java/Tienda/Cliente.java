@@ -1,20 +1,26 @@
 package Tienda;
 
-import Scraping.Videojuegos;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-
+@Getter
+@NoArgsConstructor
 public class Cliente extends Usuario {
     private double saldo;
     private CarritoDeCompras carritoDeCompras;
+private Factura factura;
 
     public Cliente(String nombreUsuario, String contrasena, String correoCliente, String telefonoCliente, String direccionCliente) {
         super(nombreUsuario, contrasena, correoCliente, telefonoCliente, direccionCliente);
     }
-    public void comprarVideojuegos(){
 
+        public void comprarVideojuego(Videojuegos juego) {//recordar asignar codigo a los videojuegos
+        int codigo=1;
+CarritoDeCompras carrito=new CarritoDeCompras();
+            carrito.agregar(juego,codigo);
+            System.out.println("Videojuego " + juego.getTitulo() + " agregado al carrito de compras.");
+        }
 
-
-  }
 
     public void agregarCarritoDeCompras(Videojuegos juego, int cantidad){
 carritoDeCompras.agregar(juego,cantidad);
@@ -25,12 +31,10 @@ carritoDeCompras.remover(videojuegos,cantidad);
     }
 
     public void verHistorialDeCompras(Cliente cliente){
-        cliente.verBiblioteca(cliente);
+        System.out.println(cliente.getFactura());
 
     }
     public void buscarVideojuegos(Videojuegos videojuego){
-
     }
-    public void actualizarInformacion(Videojuegos videojuegos){}
-
+    public void modificarInformacion(Videojuegos videojuegos){}
 }
