@@ -1,8 +1,8 @@
 Tienda\Tienda.class
 Utils.class
 Tienda\Cliente.class
+DatosJuegos\ArchivoTexto.class
 Tienda\Factura.class
-Scraping\ScrapJuegos.class
 Principal.class
 Tienda\Usuario.class
 Tienda\Administrador.class
