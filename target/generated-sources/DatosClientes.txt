@@ -1,0 +1,2 @@
+Usuario(nombreUsuario=Elmasisi, contrasena=1234, correoCliente=o.millalonco01@ufromail.cl, telefonoCliente=978674862, direccionCliente=, biblioteca=null)
+
