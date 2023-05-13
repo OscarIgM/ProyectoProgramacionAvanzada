@@ -1,8 +1,8 @@
-package Tienda;
+package Modelo;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
+import Tienda.Inventario;
 import java.util.ArrayList;
 import java.util.List;
 

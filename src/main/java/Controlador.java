@@ -1,67 +1,85 @@
-import Tienda.Tienda;
-import Tienda.Cliente;
+import DatosJuegos.ArchivoTexto;
+import DatosJuegos.BaseDeDatos;
+import Modelo.Tienda;
+import Modelo.Cliente;
 import lombok.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 @Getter
 @Setter
 @ToString
 public class Controlador {
-    private Tienda tienda;
-    private Cliente usuario;
-    private ArrayList<Cliente> clienteRegistrados = new ArrayList<>();
-    private Utils utils;
 
-    public void registrarNuevoUsuario(Cliente cliente) {
+   /* public void registrarNuevoUsuario(Cliente cliente) {
         clienteRegistrados.add(cliente);
         System.out.println(clienteRegistrados.get(0));
         //CLiente.registrarUsuarioEnBaseDeDatos(); // Llamada al método de la clase Usuario
-    }
+    }*/
 
-    public void menuInicioSesion() {
-        String opcion;
-        utils = new Utils();
-        System.out.println("Escriba 'iniciar sesion' para iniciar sesión");
-        System.out.println("Escriba 'registrarse' para registrarse");
-        System.out.println("Escriba 'salir' para salir");
-        do {
-            opcion = utils.ingresarOpcion();
-            try {
-                manejarOpcion(opcion);
-            } catch (IllegalArgumentException e) {
-                System.out.println("Opción inválida, intente de nuevo.");
+    public void primerMenu() {
+        boolean salir = false;
+        Scanner scanner = new Scanner(System.in);
+        while (!salir) {
+            System.out.println("Bienvenido a la tienda de videojuegos");
+            System.out.println("1. Iniciar sesión");
+            System.out.println("2. Registrar cliente");
+            System.out.println("3. Salir");
+            System.out.println("4.Listar Datos");
+            System.out.print("Ingrese su opción: ");
+            int opcion = scanner.nextInt();
+            scanner.nextLine(); // Limpiar el buffer de entrada
 
-                menuInicioSesion();
-            } catch (Exception e) {
-                System.out.println("Ocurrió un error, intente de nuevo.");
-                menuInicioSesion();
+            switch (opcion) {
+                case 1://iniciar sesion
+                    UsuarioControladorInterfaz cliente=new ClienteControlador();
+                    System.out.print("Ingrese su nombre de usuario: ");
+                    String nombreUsuario = scanner.nextLine();
+                    System.out.print("Ingrese su contraseña: ");
+                    String contrasena = scanner.nextLine();
+                   boolean inicioSesionExitoso = cliente.iniciarSesion(nombreUsuario, contrasena);
+
+                /*    if (inicioSesionExitoso) {
+                        System.out.println("Inicio de sesión exitoso");
+                        // Aquí puedes agregar la lógica para mostrar el menú del cliente
+                    } else {
+                        System.out.println("Inicio de sesión fallido. Verifique sus credenciales.");
+                    }*/
+                    break;
+
+                case 2://registro
+                    System.out.print("Ingrese su nombre de usuario: ");
+                    nombreUsuario = scanner.nextLine();
+                    System.out.print("Ingrese su contraseña: ");
+                    contrasena = scanner.nextLine();
+                    Cliente cliente2=new Cliente(nombreUsuario,contrasena);
+                    UsuarioControladorInterfaz clienteControlador=new ClienteControlador();
+                    clienteControlador.registrarCliente(cliente2);
+                    System.out.println("Registro exitoso. Ahora puede iniciar sesión.");
+                    break;
+
+                case 3://salir
+                    salir = true;
+                    System.out.println("Gracias por utilizar la tienda de videojuegos");
+                    break;
+
+                case 4://Datos
+                    BaseDeDatos datos=new ArchivoTexto();
+                    datos.crearArchivoJSON("DatosJsonClientes");
+                   // datos.verBase("C:\\Users\\oscar\\IdeaProjects\\ProyectoProgramacionAvanzada\\target\\generated-sources\\DatosClientes.txt");
+break;
+                default:
+                    System.out.println("Opción inválida. Por favor, ingrese una opción válida.");
+                    break;
             }
+
+            System.out.println();
         }
-        while (opcion.equalsIgnoreCase("salir"));
-    }
-    private void manejarOpcion(String opcion) {
 
-        switch (opcion) {
-            case "iniciar_sesion" -> {
-                System.out.println("Inicio sesion:");
-Cliente cliente=utils.pedirDatosInicioSesion();
-//verificar datos
-menuTienda();
-            }
-            case "registrarse" -> {
-                Utils utils = new Utils();
-                Cliente cliente = utils.pedirDatosUsuario();
-                registrarNuevoUsuario(cliente);
-            }
-            case "Salir" -> {
-                System.out.println("Saliendo de la sesion");
-                System.exit(0);
-            }
-            default -> System.out.println("Opción inválida, intente de nuevo.");
-        }
+        scanner.close();
     }
 
-    public void menuTienda() {
+    public void segundoMenu() {
         System.out.println("Menu de tienda");
         int opcion;
         Utils util = new Utils();

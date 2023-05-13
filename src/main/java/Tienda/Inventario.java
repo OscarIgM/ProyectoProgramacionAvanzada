@@ -1,5 +1,6 @@
 package Tienda;
 
+import Modelo.Videojuegos;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

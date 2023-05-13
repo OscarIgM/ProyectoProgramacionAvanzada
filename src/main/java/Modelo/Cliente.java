@@ -1,5 +1,6 @@
-package Tienda;
+package Modelo;
 
+import Tienda.CarritoDeCompras;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

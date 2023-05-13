@@ -1,5 +1,4 @@
-import Tienda.Cliente;
-import Tienda.Usuario;
+import Modelo.Cliente;
 
 import java.util.Scanner;
 

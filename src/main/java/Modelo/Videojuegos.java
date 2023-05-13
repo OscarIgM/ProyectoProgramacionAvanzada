@@ -1,4 +1,4 @@
-package Tienda;
+package Modelo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

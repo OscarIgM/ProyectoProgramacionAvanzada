@@ -1,10 +1,48 @@
 package DatosJuegos;
-
-import Tienda.Cliente;
+import Modelo.Cliente;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.*;
 
-public class ArchivoTexto {
+public class ArchivoTexto implements BaseDeDatos {
+    @Override
+    public void registrarCliente(String nombreArchivo, Cliente cliente) {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writeValue(new File(nombreArchivo), cliente);
+            System.out.println("Usuario guardado en el archivo correctamente.");
+        } catch (IOException e) {
+            System.out.println("Ocurrió un error al guardar el usuario en el archivo: " + e.getMessage());
+        }
+    }
+    @Override
+    public Cliente verBase(String nombreArchivo){
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            return objectMapper.readValue(new File(nombreArchivo), Cliente.class);
+        } catch (IOException e) {
+            System.out.println("Ocurrió un error al obtener el cliente desde el archivo: " + e.getMessage());
+        }
+        return null;
+    }
+    @Override
+    public void crearArchivoJSON(String nombreArchivo) {
+        File archivo = new File(nombreArchivo);
+        if (!archivo.exists()) {
+            try {
+                archivo.createNewFile();
+                System.out.println("Archivo JSON creado correctamente.");
+            } catch (IOException e) {
+                System.out.println("Ocurrió un error al crear el archivo JSON: " + e.getMessage());
+            }
+        } else {
+            System.out.println("El archivo JSON ya existe.");
+        }
+    }
+    }
+
+    /*@Override
     public void leerArchivo(String rutaArchivo) {
         try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
             String linea;
@@ -15,7 +53,20 @@ public class ArchivoTexto {
             System.out.println("Error al leer el archivo: " + e.getMessage());
         }
     }
-    public static void crearArchivo(String contenido, String rutaArchivo) {
+    @Override
+    public String retornarClientes() {
+        try (BufferedReader br = new BufferedReader(new FileReader(direccionDatos))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+return linea;}
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }
+return null;
+    }
+
+    @Override
+    public void crearArchivo(String contenido, String rutaArchivo) {
         try {
             FileWriter archivo = new FileWriter(rutaArchivo);
             archivo.write(contenido);
@@ -26,7 +77,8 @@ public class ArchivoTexto {
             e.printStackTrace();
         }
     }
-    public static void agregarCliente(String nombreArchivo, Cliente cliente) {
+    @Override
+    public void registrarUsuario(String nombreArchivo, Cliente cliente) {
         try {
             File archivo = new File(nombreArchivo);
             FileReader fr = new FileReader(archivo);
@@ -47,5 +99,5 @@ public class ArchivoTexto {
         } catch (IOException e) {
             System.out.println("Ocurrió un error al agregar el usuario: " + e.getMessage());
         }
-    }
-}
+    }*/
+
