@@ -1,19 +1,16 @@
 package DatosJuegos;
 import Modelo.Cliente;
+
+import java.io.IOException;
+import java.util.List;
+
 public interface BaseDeDatos {
-    String direccionDatos="C:\\Users\\oscar\\IdeaProjects\\ProyectoProgramacionAvanzada\\target\\generated-sources\\DatosClientes.txt";
 
-    void registrarCliente(String nombreArchivo, Cliente cliente);
+    List<Cliente> obtenerClientesDesdeJSON(String nombreArchivo);
 
-    Cliente verBase(String nombreArchivo);
 
     void crearArchivoJSON(String nombreArchivo);
 
-    //public void leerArchivo(String rutaArchivo);
-    //public String retornarClientes();
-    //public void crearArchivo(String contenido, String rutaArchivo);
-
-    //public void registrarUsuario(String nombre, Cliente cliente);
 
 
 }

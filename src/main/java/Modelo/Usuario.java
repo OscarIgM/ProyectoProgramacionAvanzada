@@ -12,7 +12,7 @@ public abstract class Usuario {
     private String correoCliente;
     private String telefonoCliente;
     private String direccionCliente;
-    private ArrayList<Videojuegos> biblioteca;
+   // private ArrayList<Videojuegos> biblioteca;
     public Usuario(String nombreUsuario, String contrasena, String correoCliente, String telefonoCliente, String direccionCliente) {
         this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
@@ -26,7 +26,7 @@ public abstract class Usuario {
         this.contrasena=contrasena;
     }
 
-    public Usuario(ArrayList<Videojuegos> biblioteca) {
+   /* public Usuario(ArrayList<Videojuegos> biblioteca) {
         this.biblioteca = biblioteca;
     }
     public Usuario() {
@@ -42,5 +42,5 @@ public abstract class Usuario {
     }
     public void setBiblioteca(ArrayList<Videojuegos> biblioteca) {
         this.biblioteca = biblioteca;
-    }
+    }*/
 }

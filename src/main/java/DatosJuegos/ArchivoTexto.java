@@ -1,31 +1,35 @@
 package DatosJuegos;
 import Modelo.Cliente;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.SneakyThrows;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ArchivoTexto implements BaseDeDatos {
-    @Override
-    public void registrarCliente(String nombreArchivo, Cliente cliente) {
+
+ @Override
+    public List<Cliente> obtenerClientesDesdeJSON(String nombreArchivo) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            objectMapper.writeValue(new File(nombreArchivo), cliente);
-            System.out.println("Usuario guardado en el archivo correctamente.");
+            return objectMapper.readValue(new File(nombreArchivo), objectMapper.getTypeFactory().constructCollectionType(List.class, Cliente.class));
+        } catch (JsonParseException | JsonMappingException e) {
+            System.out.println("Ocurrió un error al parsear el JSON: " + e.getMessage());
         } catch (IOException e) {
-            System.out.println("Ocurrió un error al guardar el usuario en el archivo: " + e.getMessage());
+            System.out.println("Ocurrió un error de entrada/salida: " + e.getMessage());
         }
+        return new ArrayList<>(); // Retorna una lista vacía en caso de error
     }
-    @Override
-    public Cliente verBase(String nombreArchivo){
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            return objectMapper.readValue(new File(nombreArchivo), Cliente.class);
-        } catch (IOException e) {
-            System.out.println("Ocurrió un error al obtener el cliente desde el archivo: " + e.getMessage());
-        }
-        return null;
-    }
+
+
+
+
     @Override
     public void crearArchivoJSON(String nombreArchivo) {
         File archivo = new File(nombreArchivo);
@@ -42,7 +46,18 @@ public class ArchivoTexto implements BaseDeDatos {
     }
     }
 
-    /*@Override
+    /*
+       @Override
+    public void registrarCliente(String nombreArchivo, Cliente cliente) {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writeValue(new File(nombreArchivo), cliente);
+            System.out.println("Usuario guardado en el archivo correctamente.");
+        } catch (IOException e) {
+            System.out.println("Ocurrió un error al guardar el usuario en el archivo: " + e.getMessage());
+        }
+    }
+    @Override
     public void leerArchivo(String rutaArchivo) {
         try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
             String linea;

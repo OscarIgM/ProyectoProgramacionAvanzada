@@ -1,1 +1,0 @@
-[Videojuegos(id=1, titulo=, descripcion=, imagen=, fecha=, estudioAutor=, precio=1000.0), Videojuegos(id=2, titulo=, descripcion=, imagen=, fecha=, estudioAutor=, precio=2000.0)]

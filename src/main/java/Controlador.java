@@ -1,6 +1,5 @@
 import DatosJuegos.ArchivoTexto;
 import DatosJuegos.BaseDeDatos;
-import Modelo.Tienda;
 import Modelo.Cliente;
 import lombok.*;
 import java.util.ArrayList;
@@ -52,7 +51,7 @@ public class Controlador {
                     nombreUsuario = scanner.nextLine();
                     System.out.print("Ingrese su contraseña: ");
                     contrasena = scanner.nextLine();
-                    Cliente cliente2=new Cliente(nombreUsuario,contrasena);
+                    Cliente cliente2=new Cliente(nombreUsuario,contrasena,"a","s","a");
                     UsuarioControladorInterfaz clienteControlador=new ClienteControlador();
                     clienteControlador.registrarCliente(cliente2);
                     System.out.println("Registro exitoso. Ahora puede iniciar sesión.");
@@ -64,8 +63,9 @@ public class Controlador {
                     break;
 
                 case 4://Datos
-                    BaseDeDatos datos=new ArchivoTexto();
-                    datos.crearArchivoJSON("DatosJsonClientes");
+
+
+                    //datos.crearArchivoJSON("DatosJsonClientes");
                    // datos.verBase("C:\\Users\\oscar\\IdeaProjects\\ProyectoProgramacionAvanzada\\target\\generated-sources\\DatosClientes.txt");
 break;
                 default:
