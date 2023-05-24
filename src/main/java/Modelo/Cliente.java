@@ -1,20 +1,30 @@
 package Modelo;
-
-import Tienda.CarritoDeCompras;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 @Getter
+@Setter
+@NoArgsConstructor
 public class Cliente extends Usuario {
-   /* private double saldo;
-    private CarritoDeCompras carritoDeCompras;
-private Factura factura;
-*/
+
     public Cliente(String nombreUsuario, String contrasena, String correoCliente, String telefonoCliente, String direccionCliente) {
         super(nombreUsuario, contrasena, correoCliente, telefonoCliente, direccionCliente);
     }
     public Cliente(String nombreUsuario,String contrasena){
         super(nombreUsuario, contrasena);
     }
+
+    public Cliente(Cliente cliente) {
+        String nombreUsuario = cliente.getNombreUsuario();
+        String contrasena = cliente.getContrasena();
+        String correoCliente = cliente.getCorreoCliente();
+        String telefonoCliente = cliente.getTelefonoCliente();
+        String direccionCliente = cliente.getDireccionCliente();
+    }
+   /* private double saldo;
+    private CarritoDeCompras carritoDeCompras;
+private Factura factura;
+*/
 
 /*
     public void comprarVideojuego(Videojuegos juego) {//recordar asignar codigo a los videojuegos

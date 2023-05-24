@@ -4,11 +4,10 @@ import java.util.Scanner;
 
 public class Utils {
     private Scanner scanner;
-
     public Cliente pedirDatosUsuario(){
         scanner = new Scanner(System.in);
         System.out.println("Nombre: ");
-String nombre= scanner.nextLine();
+String nombre= scanner.next();
         System.out.println("Contraseña: ");
 String contraseña= scanner.next();
         System.out.println("Correo: ");

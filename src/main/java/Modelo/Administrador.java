@@ -1,4 +1,4 @@
-package Tienda;
+package Modelo;
 
 import Modelo.Usuario;
 

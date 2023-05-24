@@ -1,22 +1,17 @@
 package Tienda;
-
 import Modelo.Videojuegos;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.HashMap;
 import java.util.Map;
-
 @Getter
 @Setter
-
 public class CarritoDeCompras {
     private Map<Videojuegos, Integer> juegos;
     private long precioTotal;
-
     public CarritoDeCompras() {
         this.juegos = new HashMap<>();
     }
-
     public void agregar(Videojuegos juego, int codigo) {
         juegos.put(juego, codigo);
     }
@@ -38,7 +33,6 @@ public class CarritoDeCompras {
             int cantidad = juegos.get(juego);
             precioTotal += juego.getPrecio() * cantidad;
         }
-
         return precioTotal;
     }
 
@@ -49,7 +43,4 @@ public class CarritoDeCompras {
     public Map<Videojuegos, Integer> getJuegos() {
         return juegos;
     }
-
-
-
 }
