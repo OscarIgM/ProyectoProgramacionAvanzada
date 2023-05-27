@@ -1,6 +1,4 @@
-package Modelo;
-
-import Modelo.Usuario;
+package modelos;
 
 public class Administrador extends Usuario {
     public Administrador(String nombreUsuario, String contrasena, String correoCliente, String telefonoCliente, String direccionCliente) {

@@ -1,4 +1,6 @@
-import Modelo.Cliente;
+package servicio;
+
+import modelos.Cliente;
 
 public interface UsuarioControladorInterfaz {
     void registrarCliente(Cliente cliente);

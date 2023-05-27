@@ -1,6 +1,6 @@
-projectKey=ProyectoTiendaVideojuegos
+projectKey=LegendaryGamesStore
 serverUrl=http://localhost:9000
 serverVersion=9.9.0.65466
-dashboardUrl=http://localhost:9000/dashboard?id=ProyectoTiendaVideojuegos
-ceTaskId=AYfJlhWgB3iWhCxiIJtN
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYfJlhWgB3iWhCxiIJtN
+dashboardUrl=http://localhost:9000/dashboard?id=LegendaryGamesStore
+ceTaskId=AYhbaw2ZkEtFBM1AHhA3
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYhbaw2ZkEtFBM1AHhA3

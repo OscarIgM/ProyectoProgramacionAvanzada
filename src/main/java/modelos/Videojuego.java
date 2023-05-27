@@ -1,4 +1,4 @@
-package Modelo;
+package modelos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
@@ -8,9 +8,7 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class Videojuegos {
-    @JsonProperty("id")
-    private int id;
+public class Videojuego {
     @JsonProperty("titulo")
     private String titulo;
     @JsonProperty("descripcion")
