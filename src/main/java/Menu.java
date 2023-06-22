@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Menu {
     private ClienteControlador clienteControlador;
     private Scanner scanner;
-private TiendaControlador tiendaControlador;
+    private TiendaControlador tiendaControlador;
     public Menu() {
         clienteControlador = new ClienteControlador();
         tiendaControlador=new TiendaControlador();
@@ -26,7 +26,7 @@ private TiendaControlador tiendaControlador;
             System.out.println("1. Iniciar sesion");
             System.out.println("2. registarse");
             System.out.println("3. Salir");
-
+            System.out.println("4. magia");
             try {
 
                 System.out.println("Escribe una de las opciones");
@@ -34,7 +34,7 @@ private TiendaControlador tiendaControlador;
 
                 switch (opcion) {
                     case 1:
-iniciarSesion();
+                        iniciarSesion();
                         break;
                     case 2:
                         registrarse();
@@ -42,6 +42,8 @@ iniciarSesion();
                     case 3:
                         salir = true;
                         break;
+                    case 4:
+                        clienteControlador.obtenerCliente("wolo");
                     default:
                         System.out.println("Solo números entre 1 y 3");
                 }
@@ -63,7 +65,7 @@ iniciarSesion();
         if (cliente!=null) {
             mostrarMenuCliente(cliente);
         }
-        }
+    }
 
     private void registrarse() {
         System.out.println("==== Registrarse ====");
@@ -81,7 +83,6 @@ iniciarSesion();
         clienteControlador.registrarCliente(nuevoCliente);
         System.out.println("Registro exitoso. ¡Bienvenido, " + nuevoCliente.getNombreUsuario() + "!");
     }
-
     private void mostrarMenuCliente(Cliente cliente) {
         boolean salir = false;
         Tienda tienda=new Tienda();
@@ -105,14 +106,16 @@ iniciarSesion();
 
             switch (opcionNum) {
                 case 1:
-                     tiendaControlador.mostrarCatalogo();
-                     clienteControlador.comprarVideojuego(cliente);
-                     tiendaControlador.realizarVenta(cliente,tienda);
+                    tiendaControlador.mostrarCatalogo();
+                    clienteControlador.buscarVideojuego(cliente);
+                    tiendaControlador.realizarVenta(cliente,tienda);
                     clienteControlador.actualizarCliente(cliente);
 
                     break;
                 case 2:
                     clienteControlador.verCarrito(cliente);
+                    clienteControlador.realizarCompra(cliente);
+                    clienteControlador.actualizarCliente(cliente);
                     break;
                 case 3:
                     clienteControlador.verBiblioteca(cliente);
@@ -125,7 +128,7 @@ iniciarSesion();
                     clienteControlador.verDatos(cliente);
                     break;
                 case 6:
-clienteControlador.actualizarCliente(cliente);
+                    clienteControlador.actualizarCliente(cliente);
                     salir = true;
                     System.out.println("Cerrando sesión. ¡Hasta luego, " + cliente.getNombreUsuario() + "!");
                     break;

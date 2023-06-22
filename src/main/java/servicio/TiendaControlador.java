@@ -1,12 +1,10 @@
 package servicio;
-
 import datosjuegos.ArchivoTexto;
 import datosjuegos.BaseDeDatos;
 import modelos.Cliente;
 import modelos.Tienda;
 import modelos.Videojuego;
 import lombok.NoArgsConstructor;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

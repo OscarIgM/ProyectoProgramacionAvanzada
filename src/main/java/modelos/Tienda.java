@@ -18,12 +18,6 @@ private Factura factura;
         return factura;
     }
 
-    public List<Videojuego> buscarVideojuego(String nombre){
-    return catalogo.getCatalogo();
-}
-
-
-
     }
 
 

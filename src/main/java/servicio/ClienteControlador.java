@@ -14,22 +14,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.logging.*;
+
 @NoArgsConstructor
 @Getter
 public class ClienteControlador implements UsuarioControladorInterfaz {
     BaseDeDatos clientesRegistrados=new ArchivoTexto();
     private Cliente cliente;
     Scanner scanner=new Scanner(System.in);
+    private static final Logger logger=Logger.getLogger(ClienteControlador.class.getName());
+
     public ClienteControlador(Cliente cliente) {
         this.cliente = cliente;
     }
     public void verCarrito(Cliente cliente){
-        for (Videojuego juego : cliente.getCarritoDeCompras().getListaVideojuegos()
-             ) {
+        for (Videojuego juego : cliente.getCarritoDeCompras().getListaVideojuegos()) {
             System.out.println(juego.getTitulo());        }
     }
 
-public void comprarVideojuego(Cliente cliente){
+public void buscarVideojuego(Cliente cliente){
     System.out.println("Ingrese el nombre del videojuego: ");
     String nombreJuego = scanner.nextLine();
     ControladorVidejuego juego = new ControladorVidejuego();
@@ -40,14 +43,35 @@ public void comprarVideojuego(Cliente cliente){
         if (respuesta.equalsIgnoreCase("s")) {
             System.out.println("Agregando al carrito");
 cliente.getCarritoDeCompras().getListaVideojuegos().add(videojuego);
-cliente.getBiblioteca().agregarVideojuego(videojuego);
             System.out.println("Juego agregado al carrito.");
-
         } else {
             System.out.println("El juego no fue agregado al carrito.");
         }
     } else {
         System.out.println("No se encontró el videojuego.");
+    }
+    System.out.println("Desea realizar la compra de inmediato?");
+String respuesta2= scanner.nextLine();
+if (respuesta2.equalsIgnoreCase("s")){
+realizarCompra(cliente);
+}else {
+    System.out.println("El videojuego quedo en el carrito");
+}
+}
+public void realizarCompra(Cliente cliente){
+    System.out.println("Desea realizar la compra de los videojuegos del carrito?");
+    String respuesta2= scanner.nextLine();
+    List<Videojuego>carrito;
+    if (respuesta2.equalsIgnoreCase("s")){
+        if (cliente.getSaldo()>cliente.getCarritoDeCompras().getPrecioTotal()){
+            System.out.println("Realizando transaccion");
+        for (Videojuego juego:cliente.getCarritoDeCompras().getListaVideojuegos()
+             ) {
+            cliente.getBiblioteca().agregarVideojuego(juego);
+        }}else {
+            System.out.println("Saldo insuficiente la transaccion no se realizo");
+        }
+
     }
 }
 public void verBiblioteca(Cliente cliente){
@@ -90,10 +114,8 @@ public void verBiblioteca(Cliente cliente){
     public Cliente obtenerClientePorNombre(String nombreUsuario) {
         ObjectMapper objectMapper = new ObjectMapper();
         File archivo = new File("DatosClientes");
-
         try {
             List<Cliente> listaClientes = objectMapper.readValue(archivo, new TypeReference<List<Cliente>>() {});
-
             for (Cliente cliente : listaClientes) {
                 if (cliente.getNombreUsuario().equals(nombreUsuario)) {
                     return cliente;
@@ -105,6 +127,43 @@ public void verBiblioteca(Cliente cliente){
             e.printStackTrace();
         }
         return null;
+    }
+    static {
+        // Configurar el nivel de registro
+        logger.setLevel(Level.ALL);
+
+        // Crear un manejador para la consola y establecer su nivel de registro
+        ConsoleHandler consoleHandler = new ConsoleHandler();
+        consoleHandler.setLevel(Level.ALL);
+
+        // Asociar el manejador a logger
+        logger.addHandler(consoleHandler);
+    }
+    static {
+        // Crear un formateador personalizado que incluya la fecha y hora
+        SimpleFormatter formatter = new SimpleFormatter() {
+            private final String format = "[%1$tF %1$tT] [%2$-7s] %3$s %n";
+
+            @Override
+            public synchronized String format(LogRecord lr) {
+                return String.format(format,
+                        new java.util.Date(lr.getMillis()),
+                        lr.getLevel().getLocalizedName(),
+                        lr.getMessage()
+                );
+            }
+        };
+
+        // Obtener el manejador predeterminado y establecer el formateador
+        Handler defaultHandler = Logger.getLogger("").getHandlers()[0];
+        defaultHandler.setFormatter(formatter);
+    }
+
+    public Cliente obtenerCliente(String nombreUsuario){
+        List <Cliente> listadoClientes=clientesRegistrados.obtenerClientesDesdeJSON("DatosClientes");
+logger.info("El clientes corresponde a "+listadoClientes);
+
+        return listadoClientes.get(0);
     }
 
     public void recargarSaldo(Cliente cliente) {

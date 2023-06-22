@@ -10,27 +10,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArchivoTexto implements BaseDeDatos {
-
-
     @Override
     public void registrarCliente(String rutaArchivo, Cliente cliente) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         File archivo = new File(rutaArchivo);
-        // Verificar si el archivo existe
         if (archivo.exists()) {
-            // Leer el contenido del archivo y convertirlo en una lista de objetos
             List<Cliente> listaObjetos = objectMapper.readValue(archivo, new TypeReference<List<Cliente>>() {
             });
-            // Agregar el nuevo objeto a la lista
             listaObjetos.add(cliente);
-            // Escribir la lista actualizada en el archivo
             objectMapper.writeValue(archivo, listaObjetos);
             System.out.println("Cliente agregado a la base de datos.");
         } else {
             System.out.println("El archivo JSON no existe.");
-        }
-    }
-
+        }}
     @Override
     public List<Cliente> obtenerClientesDesdeJSON(String nombreArchivo) {
         try {
@@ -64,9 +56,7 @@ public class ArchivoTexto implements BaseDeDatos {
     public List<Cliente> leerJsonClientes(String rutaArchivo) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         File archivo = new File(rutaArchivo);
-        // Verificar si el archivo existe
         if (archivo.exists()) {
-            // Leer el contenido del archivo y convertirlo en una lista de objetos Cliente
             return objectMapper.readValue(archivo, new TypeReference<List<Cliente>>() {
             });
         } else {
@@ -74,7 +64,6 @@ public class ArchivoTexto implements BaseDeDatos {
             return null;
         }
     }
-
     @Override
     public List<Videojuego> leerJsonVideojuego(String rutaArchivo) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -85,8 +74,7 @@ public class ArchivoTexto implements BaseDeDatos {
         } else {
             System.out.println("El archivo JSON no existe.");
             return null;
-        }
-    }
+        }}
 }
 
 

@@ -8,15 +8,16 @@ public class Biblioteca {
     public Biblioteca() {
         this.clienteVideojuegos = new ArrayList<>();
     }
-
     public List<Videojuego> getClienteVideojuegos() {
         return clienteVideojuegos;
     }
-
     public void setClienteVideojuegos(List<Videojuego> clienteVideojuegos) {
         this.clienteVideojuegos = clienteVideojuegos;
     }
-    public void agregarVideojuego(Videojuego videojuego) {
+    public void agregarVideojuego(Videojuego videojuego){
+        if (clienteVideojuegos==null){
+        clienteVideojuegos=new ArrayList<>();
+    }
         clienteVideojuegos.add(videojuego);
     }
 

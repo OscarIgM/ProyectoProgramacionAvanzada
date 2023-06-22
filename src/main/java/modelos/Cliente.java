@@ -7,7 +7,6 @@ import servicio.CarritoDeCompras;
 
 import java.util.ArrayList;
 
-@Getter
 @NoArgsConstructor
 public class Cliente extends Usuario {
     @JsonIgnore
@@ -23,8 +22,23 @@ private ArrayList<Factura> facturas;
         this.saldo=saldo;
         this.biblioteca=biblioteca;
         this.facturas=facturas;
-
     }
+    public long getSaldo() {
+        return saldo;
+    }
+
+    public ArrayList<Factura> getFacturas() {
+        return facturas;
+    }
+
+    public Biblioteca getBiblioteca() {
+        if (biblioteca==null) {
+            Biblioteca biblioteca1 = new Biblioteca();
+            return biblioteca1;
+        }
+    return biblioteca;
+    }
+
     public CarritoDeCompras getCarritoDeCompras() {
         if (carritoDeCompras == null) {
             carritoDeCompras = new CarritoDeCompras();

@@ -13,11 +13,10 @@ import java.util.List;
 public class ControladorVidejuego {
 
     private List<Videojuego> listaVideojuegos;
-
     public Videojuego buscarVideojuego(String nombre){
         BaseDeDatos juegos=new ArchivoTexto();
         try {
-           listaVideojuegos= juegos.leerJsonVideojuego("datosjuegos");
+           listaVideojuegos= juegos.leerJsonVideojuego("DatosJuegos");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -25,8 +24,7 @@ public class ControladorVidejuego {
             if (juego.getTitulo().equalsIgnoreCase(nombre)){
                 return juego;
             }
-        }
-        return null;
+        }return null;
     }
 
 

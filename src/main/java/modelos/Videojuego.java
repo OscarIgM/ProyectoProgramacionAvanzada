@@ -3,6 +3,8 @@ package modelos;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import java.util.Date;
+
 @Setter
 @Getter
 @ToString
@@ -20,6 +22,6 @@ public class Videojuego {
     @JsonProperty("estudioAutor")
     private String estudioAutor;
     @JsonProperty("precio")
-    private double precio;
+    private long precio;
 
 }
