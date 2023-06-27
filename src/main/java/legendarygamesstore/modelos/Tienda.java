@@ -3,11 +3,13 @@ package legendarygamesstore.modelos;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Getter
-@NoArgsConstructor
 public class Tienda {
-    private final Catalogo catalogo=new Catalogo();
+    private Catalogo catalogo;
 private Factura factura;
+
+    public Tienda() {
+        this.catalogo = new Catalogo();
+    }
 
     public Factura getFactura() {
         if (factura == null) {
@@ -16,7 +18,10 @@ private Factura factura;
         return factura;
     }
 
+    public Catalogo getCatalogo() {
+        return catalogo;
     }
+}
 
 
 

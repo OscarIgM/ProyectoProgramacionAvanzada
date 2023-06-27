@@ -26,6 +26,7 @@ private Videojuego videojuego=new Videojuego();
             }
         }return null;
     }
+
     public void printInformacion(Videojuego videojuego){
 logger.info("Titulo: " + videojuego.getTitulo());
 logger.info("Precio: "+videojuego.getPrecio());

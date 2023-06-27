@@ -8,15 +8,10 @@ import java.util.logging.Logger;
 
 public class TiendaControlador {
     private Tienda tienda;
-private ArchivoTexto videojuegos=new ArchivoTexto();
     private static final Logger logger=Logger.getLogger(TiendaControlador.class.getName());
 
     public TiendaControlador() {
         this.tienda=new Tienda();
-        List<Videojuego> listadoJuegos=videojuegos.leerJsonVideojuego();
-        for (Videojuego videojuego : listadoJuegos ) {
-        tienda.getCatalogo().agregarInventario(videojuego);
-        }
     }
 
     public void realizarVenta(Cliente cliente, Tienda tienda){

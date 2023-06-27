@@ -97,6 +97,10 @@ logger.info("SOLO NUMEROS ENTRE 1 y 4");
             case 1:
                 tiendaControlador.mostrarCatalogo();
                 Videojuego videojuego = controladorVideojuego.buscarVideojuego();
+                if (videojuego==null){
+                    logger.info("El videojuego no existe");
+                    break;
+                }
                 cliente.getCarritoDeCompras().agregar(videojuego);
                 archivoTexto.actualizarCliente(cliente);
                 break;
@@ -129,7 +133,7 @@ logger.info("SOLO NUMEROS ENTRE 1 y 4");
             default:
                 logger.info("Opción inválida. Ingrese un número de opción válido.");
         }
-        return false; // Si no se elige la opción 7, se continúa con el ciclo while
+        return false;
     }
     int pedirOpcion() {
         String opcion = scanner.nextLine();
