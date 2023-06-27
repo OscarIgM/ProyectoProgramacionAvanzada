@@ -37,14 +37,12 @@ private ArrayList<Factura> facturas;
         }
     return biblioteca;
     }
-
     public CarritoDeCompras getCarritoDeCompras() {
         if (carritoDeCompras == null) {
             carritoDeCompras = new CarritoDeCompras();
         }
         return carritoDeCompras;
     }
-
     public void setSaldo(long saldo) {
         this.saldo = saldo;
     }
@@ -55,20 +53,6 @@ private ArrayList<Factura> facturas;
     public void setCarritoDeCompras(CarritoDeCompras carritoDeCompras) {
         this.carritoDeCompras = carritoDeCompras;
     }
-
-    public Cliente(String nombreUsuario, String contrasena) {
-        super(nombreUsuario, contrasena);
-    }
-
-    public Cliente(Cliente cliente) {
-        String nombreUsuario = cliente.getNombreUsuario();
-        String contrasena = cliente.getContrasena();
-        String correoCliente = cliente.getCorreoCliente();
-        String telefonoCliente = cliente.getTelefonoCliente();
-        String direccionCliente = cliente.getDireccionCliente();
-    }
-
-
     public void actualizarSaldo(long nuevoSaldo) {
 this.saldo+=nuevoSaldo;
     }

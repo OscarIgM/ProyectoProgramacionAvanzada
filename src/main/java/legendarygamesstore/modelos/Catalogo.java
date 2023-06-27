@@ -1,6 +1,5 @@
 package legendarygamesstore.modelos;
 
-import legendarygamesstore.servicio.ClienteControlador;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,18 +13,18 @@ import java.util.logging.Logger;
 @NoArgsConstructor
 @ToString
 public class Catalogo {
-    private List<Videojuego> catalogo = new ArrayList<>();
+    private List<Videojuego> inventarioJuegos = new ArrayList<>();
     private static final Logger logger=Logger.getLogger(Catalogo.class.getName());
 
     public void mostrarInventario() {
-        for (int i = 0; i < getCatalogo().size(); i++) {
-            logger.info(this.getCatalogo().get(i).getTitulo());
+        for (int i = 0; i < getInventarioJuegos().size(); i++) {
+            logger.info(this.getInventarioJuegos().get(i).getTitulo());
         }
     }
 public void agregarInventario(Videojuego videojuego){
-    this.catalogo.add(videojuego);
+    this.inventarioJuegos.add(videojuego);
 }
 public void eliminarInventario(Videojuego videojuego){
-    this.catalogo.remove(videojuego);
+    this.inventarioJuegos.remove(videojuego);
 }
 }
