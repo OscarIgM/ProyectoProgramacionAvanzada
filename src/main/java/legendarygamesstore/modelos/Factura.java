@@ -29,7 +29,7 @@ public class Factura {
         }
         return totalCompra;
     }
-    public void imprimirFactura(Cliente cliente, CarritoDeCompras carritoDeCompras){
+    public void imprimirFactura(Cliente cliente){
 logger.info("Facturas del cliente"+cliente.getFacturas());
     }
 

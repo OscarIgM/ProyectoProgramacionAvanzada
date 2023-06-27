@@ -20,7 +20,7 @@ public abstract class Usuario {
     private String telefonoCliente;
     @JsonProperty("direccionCliente")
     private String direccionCliente;
-    public Usuario(String nombreUsuario, String contrasena, String correoCliente, String telefonoCliente, String direccionCliente) {
+    protected Usuario(String nombreUsuario, String contrasena, String correoCliente, String telefonoCliente, String direccionCliente) {
         this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
         this.correoCliente = correoCliente;
@@ -28,7 +28,7 @@ public abstract class Usuario {
         this.direccionCliente = direccionCliente;
     }
 
-    public Usuario(String nombreUsuario, String contrasena) {
+    protected Usuario(String nombreUsuario, String contrasena) {
         this.nombreUsuario = nombreUsuario;
         this.contrasena=contrasena;
     }

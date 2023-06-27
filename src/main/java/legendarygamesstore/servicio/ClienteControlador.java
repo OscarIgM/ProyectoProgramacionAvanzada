@@ -51,11 +51,7 @@ public void verBiblioteca(Cliente cliente){
 }
 
     public void registrarCliente(Cliente cliente)  {
-        try {
-            clientesRegistrados.registrarCliente(cliente);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    clientesRegistrados.registrarCliente(cliente);
     }
     @Override
     public Cliente iniciarSesion(String nombreUsuario, String contrasena) {
@@ -63,7 +59,6 @@ public void verBiblioteca(Cliente cliente){
         return cliente;
     }
     public Cliente verificarUsuario(String nombreUsuario, String contrasena) {
-        ArchivoTexto clientesRegistrados = new ArchivoTexto();
         System.out.println("Comprobrando datos que coincidan con la base de datos");
         System.out.println("_--------------------------------");
         ArrayList<Cliente> listadoClientes = (ArrayList<Cliente>) clientesRegistrados.obtenerClientesDesdeJSON();

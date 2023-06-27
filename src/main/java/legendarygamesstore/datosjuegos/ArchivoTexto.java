@@ -9,32 +9,37 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class ArchivoTexto  {
     static final String datosClientes="DatosClientes";
     static final String datosJuegos="DatosJuegos";
+    private static final Logger logger=Logger.getLogger(ArchivoTexto.class.getName());
 
-    public void registrarCliente(Cliente cliente) throws IOException {
+    public void registrarCliente(Cliente cliente) {
         ObjectMapper objectMapper = new ObjectMapper();
         File archivo = new File(datosClientes);
-        if (archivo.exists()) {
-            List<Cliente> listaObjetos = objectMapper.readValue(archivo, new TypeReference<List<Cliente>>() {
-            });
-            listaObjetos.add(cliente);
-            objectMapper.writeValue(archivo, listaObjetos);
-            System.out.println("Cliente agregado a la base de datos.");
-        } else {
-            System.out.println("El archivo JSON no existe.");
-        }}
-
+        try {
+            if (archivo.exists()) {
+                List<Cliente> listaObjetos = objectMapper.readValue(archivo, new TypeReference<List<Cliente>>() {});
+                listaObjetos.add(cliente);
+                objectMapper.writeValue(archivo, listaObjetos);
+               logger.info("Cliente agregado a la base de datos.");
+            } else {
+                logger.info("El archivo JSON no existe.");
+            }
+        } catch (IOException e) {
+            logger.info("Error al registrar el cliente: " + e.getMessage());
+        }
+    }
     public List<Cliente> obtenerClientesDesdeJSON() {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             return objectMapper.readValue(new File(datosClientes), objectMapper.getTypeFactory().constructCollectionType(List.class, Cliente.class));
         } catch (JsonParseException | JsonMappingException e) {
-            System.out.println("Ocurrió un error al parsear el JSON: " + e.getMessage());
+           logger.info("Ocurrió un error al parsear el JSON: " + e.getMessage());
         } catch (IOException e) {
-            System.out.println("Ocurrió un error de entrada/salida: " + e.getMessage());
+            logger.info("Ocurrió un error de entrada/salida: " + e.getMessage());
         }
         return new ArrayList<>(); // Retorna una lista vacía en caso de error
     }
@@ -64,12 +69,12 @@ public class ArchivoTexto  {
             if (archivo.exists()) {
                 return objectMapper.readValue(archivo, new TypeReference<List<Videojuego>>() {});
             } else {
-                System.out.println("El archivo JSON no existe.");
-                return null;
+               logger.info("El archivo JSON no existe.");
+                return new ArrayList<>();
             }
         } catch (IOException e) {
-            System.out.println("Error al leer el archivo JSON: " + e.getMessage());
-            return null;
+            logger.info("Error al leer el archivo JSON: " + e.getMessage());
+            return new ArrayList<>();
         }
     }
 
