@@ -1,9 +1,7 @@
-package LegendayGamesStore.modelos;
+package legendarygamesstore.modelos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-
-import java.util.Date;
 
 @Setter
 @Getter

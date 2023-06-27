@@ -1,6 +1,6 @@
-package LegendayGamesStore.modelos;
+package legendarygamesstore.modelos;
 
-import LegendayGamesStore.servicio.CarritoDeCompras;
+import legendarygamesstore.servicio.CarritoDeCompras;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

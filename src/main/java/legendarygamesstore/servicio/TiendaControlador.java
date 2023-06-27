@@ -1,8 +1,8 @@
-package LegendayGamesStore.servicio;
-import LegendayGamesStore.modelos.Cliente;
-import LegendayGamesStore.modelos.Tienda;
-import LegendayGamesStore.datosjuegos.ArchivoTexto;
-import LegendayGamesStore.modelos.Videojuego;
+package legendarygamesstore.servicio;
+import legendarygamesstore.modelos.Cliente;
+import legendarygamesstore.modelos.Tienda;
+import legendarygamesstore.datosjuegos.ArchivoTexto;
+import legendarygamesstore.modelos.Videojuego;
 import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;

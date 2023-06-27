@@ -1,9 +1,9 @@
-package LegendayGamesStore.modelos;
+package legendarygamesstore.modelos;
 
-import LegendayGamesStore.datosjuegos.ArchivoTexto;
-import LegendayGamesStore.servicio.ClienteControlador;
-import LegendayGamesStore.servicio.ControladorVideojuego;
-import LegendayGamesStore.servicio.TiendaControlador;
+import legendarygamesstore.datosjuegos.ArchivoTexto;
+import legendarygamesstore.servicio.ClienteControlador;
+import legendarygamesstore.servicio.ControladorVideojuego;
+import legendarygamesstore.servicio.TiendaControlador;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;

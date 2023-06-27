@@ -1,4 +1,4 @@
-package LegendayGamesStore.modelos;
+package legendarygamesstore.modelos;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

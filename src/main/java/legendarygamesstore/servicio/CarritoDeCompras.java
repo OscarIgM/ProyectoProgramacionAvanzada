@@ -1,5 +1,5 @@
-package LegendayGamesStore.servicio;
-import LegendayGamesStore.modelos.Videojuego;
+package legendarygamesstore.servicio;
+import legendarygamesstore.modelos.Videojuego;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

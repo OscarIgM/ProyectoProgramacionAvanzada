@@ -1,6 +1,6 @@
-package LegendayGamesStore.datosjuegos;
-import LegendayGamesStore.modelos.Cliente;
-import LegendayGamesStore.modelos.Videojuego;
+package legendarygamesstore.datosjuegos;
+import legendarygamesstore.modelos.Cliente;
+import legendarygamesstore.modelos.Videojuego;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;

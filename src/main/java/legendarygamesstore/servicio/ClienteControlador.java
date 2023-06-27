@@ -1,8 +1,8 @@
-package LegendayGamesStore.servicio;
+package legendarygamesstore.servicio;
 
-import LegendayGamesStore.modelos.Cliente;
-import LegendayGamesStore.modelos.Videojuego;
-import LegendayGamesStore.datosjuegos.ArchivoTexto;
+import legendarygamesstore.modelos.Cliente;
+import legendarygamesstore.modelos.Videojuego;
+import legendarygamesstore.datosjuegos.ArchivoTexto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import java.io.IOException;

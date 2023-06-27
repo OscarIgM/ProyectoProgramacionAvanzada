@@ -1,10 +1,8 @@
-package LegendayGamesStore.servicio;
+package legendarygamesstore.servicio;
 
-import LegendayGamesStore.modelos.Cliente;
+import legendarygamesstore.modelos.Cliente;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ClienteControladorTest {
     private ControladorVideojuego controladorJuego=new ControladorVideojuego();

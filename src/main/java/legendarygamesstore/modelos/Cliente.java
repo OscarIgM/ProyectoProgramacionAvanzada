@@ -1,5 +1,5 @@
-package LegendayGamesStore.modelos;
-import LegendayGamesStore.servicio.CarritoDeCompras;
+package legendarygamesstore.modelos;
+import legendarygamesstore.servicio.CarritoDeCompras;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.NoArgsConstructor;
