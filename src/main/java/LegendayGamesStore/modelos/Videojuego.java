@@ -1,4 +1,4 @@
-package modelos;
+package LegendayGamesStore.modelos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
@@ -23,5 +23,7 @@ public class Videojuego {
     private String estudioAutor;
     @JsonProperty("precio")
     private long precio;
+
+
 
 }

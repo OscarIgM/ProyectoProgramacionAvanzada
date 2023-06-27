@@ -1,6 +1,6 @@
-package modelos;
+package LegendayGamesStore.modelos;
 
-import servicio.CarritoDeCompras;
+import LegendayGamesStore.servicio.CarritoDeCompras;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +14,6 @@ import java.util.List;
 public class Factura {
     private ArrayList<Videojuego>compra;
     private long totalCompra;
-
     public Factura(ArrayList<Videojuego> compra) {
         this.compra = compra;
     }

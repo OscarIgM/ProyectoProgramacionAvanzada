@@ -1,4 +1,4 @@
-package modelos;
+package LegendayGamesStore.modelos;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,7 +20,6 @@ public abstract class Usuario {
     private String telefonoCliente;
     @JsonProperty("direccionCliente")
     private String direccionCliente;
-   // private ArrayList<Videojuegos> biblioteca;
     public Usuario(String nombreUsuario, String contrasena, String correoCliente, String telefonoCliente, String direccionCliente) {
         this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
@@ -34,23 +33,4 @@ public abstract class Usuario {
         this.contrasena=contrasena;
     }
 
-
-
-   /* public Usuario(ArrayList<Videojuegos> biblioteca) {
-        this.biblioteca = biblioteca;
-    }
-    public Usuario() {
-        this.biblioteca = new ArrayList<>();
-    }
-
-    public boolean verificarUsuario(String nombre, String contrasena) {
-        return this.nombreUsuario.equals(nombre) && this.contrasena.equals(contrasena);
-    }
-
-    public ArrayList<Videojuegos> getBiblioteca() {
-        return biblioteca;
-    }
-    public void setBiblioteca(ArrayList<Videojuegos> biblioteca) {
-        this.biblioteca = biblioteca;
-    }*/
 }

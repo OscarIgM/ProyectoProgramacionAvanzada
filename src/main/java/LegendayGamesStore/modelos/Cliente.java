@@ -1,9 +1,8 @@
-package modelos;
+package LegendayGamesStore.modelos;
+import LegendayGamesStore.servicio.CarritoDeCompras;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import servicio.CarritoDeCompras;
 
 import java.util.ArrayList;
 

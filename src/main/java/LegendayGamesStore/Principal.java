@@ -1,14 +1,15 @@
+package LegendayGamesStore;
 
-import datosjuegos.ArchivoTexto;
-import datosjuegos.BaseDeDatos;
+import LegendayGamesStore.datosjuegos.ArchivoTexto;
+import LegendayGamesStore.modelos.Menu;
 
 import java.io.IOException;
 
 public class Principal {
-        public static void main(String[] args) throws IOException {
-            BaseDeDatos datos=new ArchivoTexto();
+        public static void main(String[] args) {
+            ArchivoTexto datos=new ArchivoTexto();
             //datos.crearArchivoJSON("DatosClientes");
-            BaseDeDatos juegoDatos=new ArchivoTexto();
+            ArchivoTexto juegoDatos=new ArchivoTexto();
            // juegoDatos.crearArchivoJSON("DatosJuegos");
             //System.out.println(leerJsonClientes("DatosClientes"));
           Menu menu1=new Menu();

@@ -1,4 +1,4 @@
-package modelos;
+package LegendayGamesStore.modelos;
 
 import java.util.ArrayList;
 import java.util.List;

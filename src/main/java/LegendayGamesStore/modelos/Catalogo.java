@@ -1,4 +1,4 @@
-package modelos;
+package LegendayGamesStore.modelos;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,6 @@
-package servicio;
+package LegendayGamesStore.servicio;
 
-import modelos.Cliente;
+import LegendayGamesStore.modelos.Cliente;
 
 public interface UsuarioControladorInterfaz {
     void registrarCliente(Cliente cliente);
