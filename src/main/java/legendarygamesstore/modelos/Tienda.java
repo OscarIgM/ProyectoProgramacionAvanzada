@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class Tienda {
-    private Catalogo catalogo;
+    private final Catalogo catalogo=new Catalogo();
 private Factura factura;
 
     public Factura getFactura() {

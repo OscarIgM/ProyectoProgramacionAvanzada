@@ -92,60 +92,57 @@ logger.info("SOLO NUMEROS ENTRE 1 y 4");
         clienteControlador.registrarCliente(nuevoCliente);
         logger.info("Registro exitoso. ¡Bienvenido, " + nuevoCliente.getNombreUsuario() + "!");
     }
-    boolean mostrarMenuFinal(int opcionNum){
+   boolean mostrarMenuFinal(int opcionNum) {
         switch (opcionNum) {
-            case 1://Buscar VideoJuego
+            case 1:
                 tiendaControlador.mostrarCatalogo();
-                Videojuego videojuego= controladorVideojuego.buscarVideojuego();
+                Videojuego videojuego = controladorVideojuego.buscarVideojuego();
                 cliente.getCarritoDeCompras().agregar(videojuego);
                 archivoTexto.actualizarCliente(cliente);
                 break;
-            case 2://ver carrito de compras
+            case 2:
                 clienteControlador.verCarrito(cliente);
-
                 break;
-            case 3://Realizar compra
+            case 3:
                 clienteControlador.realizarCompra(cliente);
-                tiendaControlador.realizarVenta(cliente,tienda);
+                tiendaControlador.realizarVenta(cliente, tienda);
                 archivoTexto.actualizarCliente(cliente);
-            case 4://ver biblioteca
+                break;
+            case 4:
                 clienteControlador.verBiblioteca(cliente);
                 break;
-            case 5://recargar Saldo
+            case 5:
                 clienteControlador.recargarSaldo(cliente);
                 archivoTexto.actualizarCliente(cliente);
                 break;
-            case 6://ver Datos
+            case 6:
                 clienteControlador.verDatos(cliente);
                 break;
 
-            case 7://salir
-                    archivoTexto.actualizarCliente(cliente);
-                    logger.info("Cerrando sesión. ¡Hasta luego, " + cliente.getNombreUsuario() + "!");
-                    return true;
+            case 7:
+                archivoTexto.actualizarCliente(cliente);
+                logger.info("Cerrando sesión. ¡Hasta luego, " + cliente.getNombreUsuario() + "!");
+                return true;
 
             default:
-                logger.warning("Opción inválida. Ingrese un número de opción válido.");
+                logger.info("Opción inválida. Ingrese un número de opción válido.");
         }
-        return true;
+        return false; // Si no se elige la opción 7, se continúa con el ciclo while
     }
     int pedirOpcion() {
         String opcion = scanner.nextLine();
-        int opcionNum;
-        try {
-            opcionNum = Integer.parseInt(opcion);
-            return opcionNum;
-        } catch (NumberFormatException e) {
-            logger.info("Opción inválida. Ingrese un número de opción válido.");
-            return pedirOpcion();
-        }
+        return Integer.parseInt(opcion);
     }
     private void mostrarMenuCliente() {
         boolean salir = false;
         while (!salir) {
             mostrarTexto();
-            int opcionNum=pedirOpcion();
-            salir=mostrarMenuFinal(opcionNum);
+            try {
+                int opcionNum = pedirOpcion();
+                salir = mostrarMenuFinal(opcionNum);
+            } catch (NumberFormatException e) {
+                logger.info("Opción inválida. Ingrese un número de opción válido.");
+            }
         }
     }
     void mostrarTexto(){
