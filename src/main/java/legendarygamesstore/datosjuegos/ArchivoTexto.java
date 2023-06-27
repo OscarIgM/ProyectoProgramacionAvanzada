@@ -12,13 +12,13 @@ import java.util.List;
 import java.util.logging.Logger;
 
 public class ArchivoTexto  {
-    static final String datosClientes="DatosClientes";
-    static final String datosJuegos="DatosJuegos";
+    static final String DATOSCLIENTES="DatosClientes";
+    static final String DATOSJUEGOS="DatosJuegos";
     private static final Logger logger=Logger.getLogger(ArchivoTexto.class.getName());
 
     public void registrarCliente(Cliente cliente) {
         ObjectMapper objectMapper = new ObjectMapper();
-        File archivo = new File(datosClientes);
+        File archivo = new File(DATOSCLIENTES);
         try {
             if (archivo.exists()) {
                 List<Cliente> listaObjetos = objectMapper.readValue(archivo, new TypeReference<List<Cliente>>() {});
@@ -35,7 +35,7 @@ public class ArchivoTexto  {
     public List<Cliente> obtenerClientesDesdeJSON() {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            return objectMapper.readValue(new File(datosClientes), objectMapper.getTypeFactory().constructCollectionType(List.class, Cliente.class));
+            return objectMapper.readValue(new File(DATOSCLIENTES), objectMapper.getTypeFactory().constructCollectionType(List.class, Cliente.class));
         } catch (JsonParseException | JsonMappingException e) {
            logger.info("Ocurrió un error al parsear el JSON: " + e.getMessage());
         } catch (IOException e) {
@@ -45,7 +45,7 @@ public class ArchivoTexto  {
     }
     public void actualizarCliente(Cliente cliente) {
         ObjectMapper objectMapper = new ObjectMapper();
-        File archivo = new File(datosClientes);
+        File archivo = new File(DATOSCLIENTES);
         try {
             if (archivo.exists()) {
                 List<Cliente> listaObjetos = objectMapper.readValue(archivo, new TypeReference<List<Cliente>>() {});
@@ -64,7 +64,7 @@ public class ArchivoTexto  {
 
     public List<Videojuego> leerJsonVideojuego() {
         ObjectMapper objectMapper = new ObjectMapper();
-        File archivo = new File(datosJuegos);
+        File archivo = new File(DATOSJUEGOS);
         try {
             if (archivo.exists()) {
                 return objectMapper.readValue(archivo, new TypeReference<List<Videojuego>>() {});

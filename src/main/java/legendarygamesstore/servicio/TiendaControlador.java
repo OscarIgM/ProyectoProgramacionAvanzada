@@ -3,8 +3,6 @@ import legendarygamesstore.modelos.Cliente;
 import legendarygamesstore.modelos.Tienda;
 import legendarygamesstore.datosjuegos.ArchivoTexto;
 import legendarygamesstore.modelos.Videojuego;
-import lombok.NoArgsConstructor;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 

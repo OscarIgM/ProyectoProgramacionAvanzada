@@ -32,8 +32,7 @@ private ArrayList<Factura> facturas;
 
     public Biblioteca getBiblioteca() {
         if (biblioteca==null) {
-            Biblioteca biblioteca1 = new Biblioteca();
-            return biblioteca1;
+            return new Biblioteca();
         }
     return biblioteca;
     }

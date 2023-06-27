@@ -5,7 +5,6 @@ import legendarygamesstore.modelos.Videojuego;
 import legendarygamesstore.datosjuegos.ArchivoTexto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -20,36 +19,31 @@ public class ClienteControlador implements UsuarioControladorInterfaz {
     private static final Logger logger=Logger.getLogger(ClienteControlador.class.getName());
    private Cliente cliente;
    private final ControladorVideojuego videojuego=new ControladorVideojuego();
-
-
     public void verCarrito(Cliente cliente){
         for (Videojuego juego : cliente.getCarritoDeCompras().getListaVideojuegos()) {
-            System.out.println(juego.getTitulo());        }
+            logger.info(juego.getTitulo());        }
     }
-
-
 public void realizarCompra(Cliente cliente){
-    System.out.println("Desea realizar la compra de los videojuegos del carrito?");
+    logger.info("Desea realizar la compra de los videojuegos del carrito?");
     String respuesta2= scanner.nextLine();
     List<Videojuego>carrito;
     if (respuesta2.equalsIgnoreCase("s")){
         if (cliente.getSaldo()>cliente.getCarritoDeCompras().getPrecioTotal()){
-            System.out.println("Realizando transaccion");
+            logger.info("Realizando transaccion");
         for (Videojuego juego:cliente.getCarritoDeCompras().getListaVideojuegos()
              ) {
             cliente.getBiblioteca().agregarVideojuego(juego);
         }}else {
-            System.out.println("Saldo insuficiente la transaccion no se realizo");
+            logger.info("Saldo insuficiente la transaccion no se realizo");
         }
 
     }
 }
 public void verBiblioteca(Cliente cliente){
     for ( Videojuego videojuego : cliente.getBiblioteca().getClienteVideojuegos()) {
-        System.out.println(videojuego.getTitulo());
+        logger.info(videojuego.getTitulo());
     }
 }
-
     public void registrarCliente(Cliente cliente)  {
     clientesRegistrados.registrarCliente(cliente);
     }
@@ -59,12 +53,12 @@ public void verBiblioteca(Cliente cliente){
         return cliente;
     }
     public Cliente verificarUsuario(String nombreUsuario, String contrasena) {
-        System.out.println("Comprobrando datos que coincidan con la base de datos");
-        System.out.println("_--------------------------------");
+        logger.info("Comprobrando datos que coincidan con la base de datos");
+       logger.info("_--------------------------------");
         ArrayList<Cliente> listadoClientes = (ArrayList<Cliente>) clientesRegistrados.obtenerClientesDesdeJSON();
         for (int i = 0; i < listadoClientes.size(); i++) {
             if (Objects.equals(listadoClientes.get(i).getNombreUsuario(), nombreUsuario) && Objects.equals(listadoClientes.get(i).getContrasena(), contrasena)) {
-                System.out.println("Inico de sesion exitoso");
+                logger.info("Inico de sesion exitoso");
                 return new Cliente(listadoClientes.get(i).getNombreUsuario()
                         , listadoClientes.get(i).getContrasena()
                         , listadoClientes.get(i).getCorreoCliente()
@@ -76,8 +70,29 @@ public void verBiblioteca(Cliente cliente){
             }
         }return null;
     }
+    public void listadoClientes(){
+        List <Cliente> listadoClientes=clientesRegistrados.obtenerClientesDesdeJSON();
+logger.info("Listado Completo de clientes "+listadoClientes+"\n");
+    }
 
-
+    public void recargarSaldo(Cliente cliente) {
+        logger.info("Su saldo actual es "+cliente.getSaldo());
+        logger.info("Desea realizar una recarga?");
+        String respuesta = scanner.nextLine();
+        long nuevoSaldo;
+        if (respuesta.equalsIgnoreCase("s")) {
+           logger.info("Ingrese el monto a recargar");
+nuevoSaldo= scanner.nextLong();
+cliente.actualizarSaldo(nuevoSaldo);
+        } else {
+            logger.info("El juego no fue agregado al carrito.");
+        }
+    }
+    public void verDatos(Cliente cliente) {
+       logger.info("Estimado cliente aqui un informe de sus datos");
+        logger.info("NombreUsuario: " + cliente.getNombreUsuario());
+        logger.info("Saldo es de "+cliente.getSaldo());
+    }
     static {
         // Crear un formateador personalizado que incluya la fecha y hora
         SimpleFormatter formatter = new SimpleFormatter() {
@@ -97,31 +112,4 @@ public void verBiblioteca(Cliente cliente){
         Handler defaultHandler = Logger.getLogger("").getHandlers()[0];
         defaultHandler.setFormatter(formatter);
     }
-
-    public void listadoClientes(){
-        List <Cliente> listadoClientes=clientesRegistrados.obtenerClientesDesdeJSON();
-logger.info("Listado Completo de clientes "+listadoClientes+"\n");
-    }
-
-    public void recargarSaldo(Cliente cliente) {
-        System.out.println("Su saldo actual es "+cliente.getSaldo());
-        System.out.println("Desea realizar una recarga?");
-        String respuesta = scanner.nextLine();
-        long nuevoSaldo;
-        if (respuesta.equalsIgnoreCase("s")) {
-            System.out.println("Ingrese el monto a recargar");
-nuevoSaldo= scanner.nextLong();
-cliente.actualizarSaldo(nuevoSaldo);
-        } else {
-            System.out.println("El juego no fue agregado al carrito.");
-        }
-    }
-
-    public void verDatos(Cliente cliente) {
-        System.out.println("Estimado cliente aqui un informe de sus datos");
-        System.out.println("NombreUsuario: " + cliente.getNombreUsuario());
-        System.out.println("Saldo es de "+cliente.getSaldo());
-
-    }
-
 }

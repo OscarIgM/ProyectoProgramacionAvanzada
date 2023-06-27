@@ -1,12 +1,9 @@
 package legendarygamesstore.modelos;
 
-import legendarygamesstore.servicio.CarritoDeCompras;
-import legendarygamesstore.servicio.ClienteControlador;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -14,11 +11,11 @@ import java.util.logging.Logger;
 @Getter
 @NoArgsConstructor
 public class Factura {
-    private ArrayList<Videojuego>compra;
+    private List<Videojuego> compra;
     private long totalCompra;
     private static final Logger logger=Logger.getLogger(Factura.class.getName());
 
-    public Factura(ArrayList<Videojuego> compra) {
+    public Factura(List<Videojuego> compra) {
         this.compra = compra;
     }
     public long calcularTotal(List<Videojuego> compra) {

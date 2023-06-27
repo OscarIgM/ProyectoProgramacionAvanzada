@@ -88,7 +88,7 @@ logger.info("SOLO NUMEROS ENTRE 1 y 4");
         String telefono= scanner.next();
         logger.info("Direccion: ");
         String direccion= scanner.next();
-        Cliente nuevoCliente = new Cliente(nombreUsuario, contrasena,correo,telefono,direccion,0,new Biblioteca(),new ArrayList<Factura>());
+        Cliente nuevoCliente = new Cliente(nombreUsuario, contrasena,correo,telefono,direccion,0,new Biblioteca(),new ArrayList<>());
         clienteControlador.registrarCliente(nuevoCliente);
         logger.info("Registro exitoso. ¡Bienvenido, " + nuevoCliente.getNombreUsuario() + "!");
     }
