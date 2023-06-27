@@ -3,8 +3,7 @@ import legendarygamesstore.servicio.CarritoDeCompras;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.NoArgsConstructor;
-
-import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 public class Cliente extends Usuario {
@@ -15,8 +14,8 @@ public class Cliente extends Usuario {
     @JsonProperty("biblioteca")
 private Biblioteca biblioteca;
     @JsonProperty("facturas")
-private ArrayList<Factura> facturas;
-    public Cliente(String nombreUsuario, String contrasena, String correoCliente, String telefonoCliente, String direccionCliente,long saldo,Biblioteca biblioteca,ArrayList<Factura>facturas) {
+private List<Factura> facturas;
+    public Cliente(String nombreUsuario, String contrasena, String correoCliente, String telefonoCliente, String direccionCliente, long saldo, Biblioteca biblioteca, List<Factura> facturas) {
         super(nombreUsuario, contrasena, correoCliente, telefonoCliente, direccionCliente);
         this.saldo=saldo;
         this.biblioteca=biblioteca;
@@ -26,7 +25,7 @@ private ArrayList<Factura> facturas;
         return saldo;
     }
 
-    public ArrayList<Factura> getFacturas() {
+    public List<Factura> getFacturas() {
         return facturas;
     }
 

@@ -118,8 +118,10 @@ logger.info("SOLO NUMEROS ENTRE 1 y 4");
             case 6:
                 clienteControlador.verDatos(cliente);
                 break;
-
-            case 7:
+                case 7:
+                    cliente.getCarritoDeCompras().limpiarCarrito();
+                    break;
+            case 8:
                 archivoTexto.actualizarCliente(cliente);
                 logger.info("Cerrando sesión. ¡Hasta luego, " + cliente.getNombreUsuario() + "!");
                 return true;
@@ -153,8 +155,9 @@ logger.info("SOLO NUMEROS ENTRE 1 y 4");
         logger.info("4. Ver Biblioteca");
         logger.info("5. Añadir Saldo");
         logger.info("6. Configuracion de la informacion");
+        logger.info("7. Limpiar Carrtio");
 
-        logger.info("7. Cerrar Sesión");
+        logger.info("8. Cerrar Sesión");
         logger.info("Ingrese el número de opción: ");
     }
 }
