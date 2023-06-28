@@ -37,6 +37,9 @@ public class CarritoDeCompras {
     public void limpiarCarrito() {
         listaVideojuegos.clear();
     }
+    public boolean contiene(Videojuego juego) {
+        return listaVideojuegos.contains(juego);
+    }
     boolean printConfirmacion(Videojuego juego){
         logger.info("Desea agregar "+juego.getTitulo()+"al carrito? (s/n)");
         String respuesta=scanner.nextLine();

@@ -15,10 +15,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TiendaControladorTest {
     private List<Videojuego>listadoJuegos;
-@BeforeEach
+    private TiendaControlador tiendaControlador;
+
+    @BeforeEach
 void setUp() throws Exception{
     ArchivoTexto archivoTexto=new ArchivoTexto();
    listadoJuegos=archivoTexto.leerJsonVideojuego();
+   tiendaControlador = new TiendaControlador();
 }
     @DisplayName("Prueba para validar la existencia de los juegos del catalogo")
 @ParameterizedTest
@@ -27,6 +30,34 @@ void setUp() throws Exception{
         boolean juegoEncontrado = false;
         for (Videojuego videojuego : listadoJuegos) {
             if (videojuego.getTitulo().equalsIgnoreCase(nombreJuego)) {
+                juegoEncontrado = true;
+                break;
+            }
+        }
+        Assertions.assertTrue(juegoEncontrado);
+    }
+@DisplayName("Prueba para ver si el catalogo de la tienda corresponde al del json")
+@Test
+void buscarVideojuego() {
+    for (Videojuego juego : listadoJuegos) {
+        boolean juegoEncontrado = false;
+        for (Videojuego juegoCatalogo : tiendaControlador.getTienda().getCatalogo().getInventarioJuegos()) {
+            if (juego.getTitulo().equalsIgnoreCase(juegoCatalogo.getTitulo())) {
+                juegoEncontrado = true;
+                break;
+            }
+        }
+        Assertions.assertTrue(juegoEncontrado);
+    }
+
+    }
+    @DisplayName("Prueba para buscar un juego")
+    @ParameterizedTest
+    @ValueSource(strings = {"God of War"})
+    void buscarVideojuego2(String titulo) {
+        boolean juegoEncontrado = false;
+        for (Videojuego juegoCatalogo : tiendaControlador.getTienda().getCatalogo().getInventarioJuegos()) {
+            if (juegoCatalogo.getTitulo().equalsIgnoreCase(titulo)) {
                 juegoEncontrado = true;
                 break;
             }

@@ -23,22 +23,25 @@ public class ClienteControlador implements UsuarioControladorInterfaz {
         for (Videojuego juego : cliente.getCarritoDeCompras().getListaVideojuegos()) {
             logger.info(juego.getTitulo());        }
     }
-public void realizarCompra(Cliente cliente){
-    logger.info("Desea realizar la compra de los videojuegos del carrito?");
-    String respuesta2= scanner.nextLine();
-    List<Videojuego>carrito;
-    if (respuesta2.equalsIgnoreCase("s")){
-        if (cliente.getSaldo()>cliente.getCarritoDeCompras().getPrecioTotal()){
-            logger.info("Realizando transaccion");
-        for (Videojuego juego:cliente.getCarritoDeCompras().getListaVideojuegos()
-             ) {
-            cliente.getBiblioteca().agregarVideojuego(juego);
-        }}else {
-            logger.info("Saldo insuficiente la transaccion no se realizo");
+    public boolean realizarCompra(Cliente cliente) {
+        boolean realizar=false;
+        logger.info("Desea realizar la compra de los videojuegos del carrito?");
+        String respuesta2 = scanner.nextLine();
+        if (respuesta2.equalsIgnoreCase("s")) {
+            if (cliente.getSaldo() > cliente.getCarritoDeCompras().getPrecioTotal()) {
+                logger.info("Realizando transaccion");
+                for (Videojuego juego : cliente.getCarritoDeCompras().getListaVideojuegos()) {
+                    cliente.getBiblioteca().agregarVideojuego(juego);
+                    cliente.setSaldo(cliente.getSaldo() - juego.getPrecio());
+                }
+                realizar=true;
+            } else {
+                logger.info("Saldo insuficiente, la transaccion no se realizo");
+            }
         }
-
+        return realizar;
     }
-}
+
 public void verBiblioteca(Cliente cliente){
     for ( Videojuego videojuego : cliente.getBiblioteca().getClienteVideojuegos()) {
         logger.info(videojuego.getTitulo());
@@ -77,7 +80,7 @@ logger.info("Listado Completo de clientes "+listadoClientes+"\n");
 
     public void recargarSaldo(Cliente cliente) {
         logger.info("Su saldo actual es "+cliente.getSaldo());
-        logger.info("Desea realizar una recarga?");
+        logger.info("Desea realizar una recarga?(s/n");
         String respuesta = scanner.nextLine();
         long nuevoSaldo;
         if (respuesta.equalsIgnoreCase("s")) {
@@ -85,7 +88,7 @@ logger.info("Listado Completo de clientes "+listadoClientes+"\n");
 nuevoSaldo= scanner.nextLong();
 cliente.actualizarSaldo(nuevoSaldo);
         } else {
-            logger.info("El juego no fue agregado al carrito.");
+            logger.info("la recarga fallo.");
         }
     }
     public void verDatos(Cliente cliente) {

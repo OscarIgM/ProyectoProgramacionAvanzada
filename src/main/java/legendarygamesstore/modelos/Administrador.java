@@ -5,6 +5,7 @@ public class Administrador extends Usuario {
         super(nombreUsuario, contrasena, correoCliente, telefonoCliente, direccionCliente);
     }
 
+
     //metodo para banear usuarios, anular compras,
 
 

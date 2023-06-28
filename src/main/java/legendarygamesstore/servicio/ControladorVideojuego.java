@@ -16,12 +16,10 @@ private Videojuego videojuego=new Videojuego();
     private static final Logger logger=Logger.getLogger(ControladorVideojuego.class.getName());
     ArchivoTexto juegos=new ArchivoTexto();
     Scanner scanner=new Scanner(System.in);
-    public Videojuego buscarVideojuego(){
-        logger.info("Ingrese Videojuego a buscar");
-        String nombreJuego = scanner.nextLine();
+    public Videojuego buscarVideojuego(String titulo){
         listaVideojuegos= juegos.leerJsonVideojuego();
         for (Videojuego juego : listaVideojuegos) {
-            if (juego.getTitulo().equalsIgnoreCase(nombreJuego)){
+            if (juego.getTitulo().equalsIgnoreCase(titulo)){
                 return juego;
             }
         }return null;

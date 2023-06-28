@@ -13,7 +13,7 @@ import java.util.logging.*;
 public class Menu {
     ArchivoTexto archivoTexto;
     private Cliente cliente;
-    private final ClienteControlador clienteControlador;
+    private ClienteControlador clienteControlador;
     private Scanner scanner;
     private final ControladorVideojuego controladorVideojuego=new ControladorVideojuego();
     private static final Logger logger=Logger.getLogger(Menu.class.getName());
@@ -96,7 +96,9 @@ logger.info("SOLO NUMEROS ENTRE 1 y 4");
         switch (opcionNum) {
             case 1:
                 tiendaControlador.mostrarCatalogo();
-                Videojuego videojuego = controladorVideojuego.buscarVideojuego();
+                logger.info("Ingrese Videojuego a buscar");
+                String nombreJuego = scanner.nextLine();
+                Videojuego videojuego = controladorVideojuego.buscarVideojuego(nombreJuego);
                 if (videojuego==null){
                     logger.info("El videojuego no existe");
                     break;
@@ -108,8 +110,11 @@ logger.info("SOLO NUMEROS ENTRE 1 y 4");
                 clienteControlador.verCarrito(cliente);
                 break;
             case 3:
-                clienteControlador.realizarCompra(cliente);
-                tiendaControlador.realizarVenta(cliente, tienda);
+               boolean realizarCompra= clienteControlador.realizarCompra(cliente);
+               if (realizarCompra){
+                   tiendaControlador.realizarVenta(cliente, tienda);
+                   cliente.getCarritoDeCompras().limpiarCarrito();
+               }
                 archivoTexto.actualizarCliente(cliente);
                 break;
             case 4:
