@@ -73,10 +73,7 @@ public void verBiblioteca(Cliente cliente){
             }
         }return null;
     }
-    public void listadoClientes(){
-        List <Cliente> listadoClientes=clientesRegistrados.obtenerClientesDesdeJSON();
-logger.info("Listado Completo de clientes "+listadoClientes+"\n");
-    }
+
 
     public void recargarSaldo(Cliente cliente) {
         logger.info("Su saldo actual es "+cliente.getSaldo());

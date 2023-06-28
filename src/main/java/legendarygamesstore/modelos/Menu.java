@@ -52,9 +52,6 @@ logger.info("Escriba Una de las opciones");
                     case 3:
                         salir = true;
                         break;
-                    case 4:
-                        clienteControlador.listadoClientes();
-                        break;
                     default:
 logger.info("SOLO NUMEROS ENTRE 1 y 4");
                 }
